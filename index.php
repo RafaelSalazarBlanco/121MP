@@ -27,10 +27,10 @@ $new = new CurlRequest();
 
 $resultadoNews = $new->request("getNews", array(), "GET");
 $jsonNews = json_decode($resultadoNews, true);
-/*
+
 $resultadoCategories = $new -> request("getCategories",array(),"GET");
 $jsonCategories = json_decode($resultadoCategories, true);
-
+/*
 $resultadoAnnouncements = $new -> request("getAnnouncements",array(),"GET");
 $jsonAnnouncements = json_decode($resultadoAnnouncements, true);
 */
@@ -51,6 +51,7 @@ $jsonAnnouncements = json_decode($resultadoAnnouncements, true);
 <?php
 $productos = (null != $jsonNews && $jsonNews["productos"]) ? $jsonNews["productos"] : array();
 $anuncios = (null != $jsonNews && $jsonNews["anuncios"]) ? $jsonNews["anuncios"] : array();
+$categorias = (null != $jsonCategories && $jsonCategories["categories"]) ? $jsonCategories["categories"] : array();
 
 if (count($productos) > 0) {
     ?>
@@ -71,6 +72,28 @@ if (count($productos) > 0) {
             <?php } ?>
         </div>
     </div>
+<?php }
+
+
+if (count($categorias) > 0) {
+?>
+<div class="container" style="padding-top: 40px; padding-bottom: 30px; font-size: medium;">
+    <h2 style="font-family: MontserratBold, serif;" align="center">CATEGOR&Iacute;AS</h2>
+    <div class="row">
+        <?php
+        foreach ($categorias as $row) {
+            ?>
+            <div class="col-lg-4">
+                <div class="container_image">
+                    <img src="<?php echo $row["categoria_thumb"]; ?>" alt="Avatar" class="image" style="width:100%">
+                    <div class="middle">
+                        <div class="text"><?php echo $row["categoria_nombre"]; ?></div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
 <?php } ?>
 
 
