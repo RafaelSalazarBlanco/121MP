@@ -1,0 +1,101 @@
+@font-face {
+    font-family: MontserratBlack;
+    src: url("../fonts/Montserrat-Black.ttf");
+}
+
+@font-face {
+    font-family: MontserratBlackItalic;
+    src: url("../fonts/Montserrat-BlackItalic.ttf");
+}
+
+@font-face {
+    font-family: MontserratBold;
+    src: url("../fonts/Montserrat-Bold.ttf");
+}
+
+@font-face {
+    font-family: MontserratRegular;
+    src: url("../fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: MontserratLight;
+    src: url("../fonts/Montserrat-Light.ttf");
+}
+
+.footerP{
+    font-family: MontserratBold, serif;
+    color: #ffffff;
+}
+
+.footerUl{
+    font-family: MontserratRegular, serif;
+    color: #ffffff;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0;
+}
+
+.footerAnchor{
+    font-family: MontserratLight, serif;
+    color: #E7E7E7;
+    font-size: medium;
+    text-decoration: none;
+}
+
+.footerAnchor:hover{
+    font-family: MontserratRegular, serif;
+    color: #FFB426;
+    font-size: medium;
+    text-decoration: none;
+}
+
+/* Sinlge Product */
+
+.container_image {
+    position: relative;
+}
+
+.container_image .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border: 10px solid #FFB426;
+    aspect-ratio: 1 / 1;
+}
+
+.container_image .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.container_image:hover .image {
+    opacity: 0.3;
+}
+
+.container_image:hover .middle {
+    opacity: 1;
+}
+
+.container_image .text {
+    background-color: #FFB42688;
+    color: white;
+    font-family: MontserratBold, serif;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 45% 20px;
+}
