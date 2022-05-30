@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: MontserratSemiBold;
+    src: url("../fonts/Montserrat-SemiBold.ttf");
+}
+
+@font-face {
     font-family: MontserratRegular;
     src: url("../fonts/Montserrat-Regular.ttf");
 }
@@ -21,6 +26,11 @@
 @font-face {
     font-family: MontserratLight;
     src: url("../fonts/Montserrat-Light.ttf");
+}
+
+@font-face {
+    font-family: MontserratThin;
+    src: url("../fonts/Montserrat-Thin.ttf");
 }
 
 .footerP{
@@ -36,17 +46,21 @@
     padding: 0;
 }
 
+.footerUl li {
+    padding-top: 13px;
+}
+
 .footerAnchor{
     font-family: MontserratLight, serif;
     color: #E7E7E7;
-    font-size: medium;
+    font-size: 17px;
     text-decoration: none;
 }
 
 .footerAnchor:hover{
     font-family: MontserratRegular, serif;
     color: #FFB426;
-    font-size: medium;
+    font-size: 17px;
     text-decoration: none;
 }
 
@@ -99,4 +113,26 @@
     display: flex;
     justify-content: center;
     padding: 45% 20px;
+}
+
+.title_product {
+    color: black; 
+    font-family: MontserratThin, serif;
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+.price_product {
+    color: black;
+    font-family: MontserratSemiBold, serif;
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+.share_product {
+    color: black;
+    width: 100%;
+    font-family: MontserratBold, serif;
+    font-size: 14px;
+    text-align: center;
 }

@@ -1,7 +1,7 @@
 <div style="bottom: 0; width: 100%; background: #2D2D2D;">
 
-    <div class="row" style="width: 100%; padding-left: 25px; padding-top: 25px;">
-        <div class="col">
+    <div class="row" style="width: 100%; padding-top: 25px;">
+        <div class="col" style="margin-left: 40px;">
             <p class="footerP">Acerca de</p>
             <ul class="footerUl">
                 <li><a class="footerAnchor" href="index.php">121 MarketPlace</a></li>
@@ -28,10 +28,21 @@
             </ul>
         </div>
         <div class="col">
-            <p class="footerP">121 MarketPlace App</p>
+            <div class="row">
+                <p class="footerP">121 MarketPlace App</p>
+            </div>
+            <div class="row">
+                <img src="assets/images/android_icon.bdc9594f.svg" style="padding-top: 5px; width: 35px;"/>
+                <img src="assets/images/apple_icon.f1805f1b.svg" style="padding-top: 5px; margin-left: 5px; width: 35px;"/>
+            </div>
+            <div class="row" style="margin-top: 25px;">
+                <p class="footerP">Redes Sociales</p>
+            </div>
+            <div class="row">
+            </div>
         </div>
         <div class="col">
-            <img src="assets/images/footer.88b9cbba.png" style="padding-top: 5px; width: 100%;"/>
+            <img src="assets/images/footer.88b9cbba.png" style="padding-top: 5px; width: 350px;"/>
         </div>
     </div>
 </div>

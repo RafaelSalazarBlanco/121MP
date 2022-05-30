@@ -13,6 +13,11 @@ class CurlRequest
         //url contra la que atacamos
         $urlString = $domain . $path . $method;
 
+        if ($type == "GET" && $params != null){
+            $data = http_build_query($params);
+            $urlString = $urlString . "&" .$data;
+        }
+
         $ch = curl_init($urlString);
         //a true, obtendremos una respuesta de la url, en otro caso,
         //true si es correcto, false si no lo es
@@ -20,7 +25,10 @@ class CurlRequest
         //establecemos el verbo http que queremos utilizar para la petición
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $type);
         //enviamos el array data
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+        if ($type == "POST") {
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POST, http_build_query($params));
+        }
         //obtenemos la respuesta
         $response = curl_exec($ch);
         // Se cierra el recurso CURL y se liberan los recursos del sistema
