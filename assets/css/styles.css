@@ -118,14 +118,14 @@
 .title_product {
     color: black; 
     font-family: MontserratThin, serif;
-    font-size: 25px;
+    font-size: 27px;
     padding-top: 10px;
 }
 
 .price_product {
     color: black;
     font-family: MontserratSemiBold, serif;
-    font-size: 30px;
+    font-size: 33px;
     padding-top: 10px;
 }
 
@@ -135,4 +135,47 @@
     font-family: MontserratBold, serif;
     font-size: 14px;
     text-align: center;
+}
+
+.description_store {
+    padding: 10px;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    font-family: MontserratThin, serif;
+    font-size: 14px;
+    text-align: justify-all;
+
+}
+
+.description_store a {
+    font-family: MontserratLight, serif;
+    color: #000000;
+    text-decoration: none;
+}
+
+.subtitle_product {
+    color: black;
+    font-family: MontserratRegular, serif;
+    font-size: 22px;
+    padding-top: 30px;
+}
+
+.description_product {
+    color: black;
+    font-family: MontserratLight, serif;
+    font-size: 19px;
+}
+
+.button_orange {
+    background: #ffb326;
+    color: white;
+    font-family: MontserratSemiBold, serif;
+    font-size: 19px;
+    text-align: center;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 8px;
 }

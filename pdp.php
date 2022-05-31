@@ -12,7 +12,7 @@ $product_id = $_GET["product_id"];
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php include "includes/clientCurl.php"; ?>
     <?php
-    setlocale(LC_MONETARY,"es_MX");
+    setlocale(LC_MONETARY, "es_MX");
     $new = new CurlRequest();
     $resultadoproduct = $new->request("getProductDetail", array("producto_id" => $product_id), "GET");
     $jsonProducto = json_decode($resultadoproduct, true);
@@ -20,21 +20,27 @@ $product_id = $_GET["product_id"];
     $producto = $jsonProducto["producto"];
     $number = $producto["producto_precio"] * 1;
 
+    $favorite = $producto["favorite"];
+    $providerFavorite = $producto["provedor_favorite"];
+
+    $comments = $producto["producto_comentarios"];
+
     $price = money_format("%.2n", $number);
     ?>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="assets/css/styles.css"/>
-    <meta property="og:title" content="<?php echo $producto["producto_nombre"]; ?>" />
-    <meta property="og:description" content="<?php echo $producto["producto_descripcion"]; ?>" />
-    <meta property="og:image" content="<?php echo $producto["producto_thumb"]; ?>" />
+    <meta property="og:title" content="<?php echo $producto["producto_nombre"]; ?>"/>
+    <meta property="og:description" content="<?php echo $producto["producto_descripcion"]; ?>"/>
+    <meta property="og:image" content="<?php echo $producto["producto_thumb"]; ?>"/>
 
-    <meta name="twitter:card" content="summary" />
-    <meta property="og:url" content="<?php echo $_SERVER['SERVER_NAME']; ?>/pdp.php?product_id=<?php echo $product_id; ?>" />
-    <meta property="og:title" content="<?php echo $producto["producto_nombre"]; ?>" />
-    <meta property="og:description" content="<?php echo $producto["producto_descripcion"]; ?>" />
-    <meta property="og:image" content="<?php echo $producto["producto_thumb"]; ?>" />
-    <meta property="og:summary_large_image" content="<?php echo $producto["producto_thumb"]; ?>" />
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:url"
+          content="<?php echo $_SERVER['SERVER_NAME']; ?>/pdp.php?product_id=<?php echo $product_id; ?>"/>
+    <meta property="og:title" content="<?php echo $producto["producto_nombre"]; ?>"/>
+    <meta property="og:description" content="<?php echo $producto["producto_descripcion"]; ?>"/>
+    <meta property="og:image" content="<?php echo $producto["producto_thumb"]; ?>"/>
+    <meta property="og:summary_large_image" content="<?php echo $producto["producto_thumb"]; ?>"/>
 
     <title>121 Market Place</title>
 </head>
@@ -43,16 +49,15 @@ $product_id = $_GET["product_id"];
 <?php include "includes/navbar.php"; ?>
 
 
-
 <div class="row">
     <div class="col-2">
 
     </div>
-    <div class="col-5">
+    <div class="col-6" align="center">
         <img src="<?php echo $producto["producto_image"]; ?>"
-             style="width: 100%; aspect-ratio: 1 / 1; padding: 5px; padding-right: 15px; padding-left: 15px;"/>
+             style="width: 75%; margin-top: 10px;"/>
     </div>
-    <div class="col-5">
+    <div class="col-4">
         <div class="row">
             <div class="title_product"> <?php echo $producto["producto_nombre"]; ?></div>
         </div>
@@ -65,17 +70,72 @@ $product_id = $_GET["product_id"];
                 <div class="row">
                     <div class="share_product">COMPARTIR</div>
                     <div class="share_product">
-                        <a href="http://www.facebook.com/sharer.php?s=100&p[url]=<?php echo $_SERVER['SERVER_NAME']; ?>/pdp.php?product_id=<?php echo $product_id; ?>&p[title]=<?php echo $producto["producto_nombre"]; ?>&p[summary]=<?php echo $producto["producto_descripcion"]; ?>&p[images][0]=<?php echo $producto["producto_thumb"]; ?>" target="_blank"><img src="assets/images/facebook_share.png" width="25px" style="margin-right: 5px;"></a>
-                        <a href="http://twitter.com/share?url==<?php echo $_SERVER['SERVER_NAME']; ?>/pdp.php?product_id=<?php echo $product_id; ?>&text=<?php echo $producto["producto_nombre"]; ?>" target="_blank"><img src="assets/images/twitter_share.png" width="25px" style="margin-right: 5px;"></a>
+                        <a href="http://www.facebook.com/sharer.php?s=100&p[url]=<?php echo $_SERVER['SERVER_NAME']; ?>/pdp.php?product_id=<?php echo $product_id; ?>&p[title]=<?php echo $producto["producto_nombre"]; ?>&p[summary]=<?php echo $producto["producto_descripcion"]; ?>&p[images][0]=<?php echo $producto["producto_thumb"]; ?>"
+                           target="_blank"><img src="assets/images/facebook_share.png" width="25px"
+                                                style="margin-right: 5px;"></a>
+                        <a href="http://twitter.com/share?url==<?php echo $_SERVER['SERVER_NAME']; ?>/pdp.php?product_id=<?php echo $product_id; ?>&text=<?php echo $producto["producto_nombre"]; ?>"
+                           target="_blank"><img src="assets/images/twitter_share.png" width="25px"
+                                                style="margin-right: 5px;"></a>
                         <a href=""><img src="assets/images/whatsapp_share.png" width="25px" style="margin-right: 5px;"></a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row" style="margin-top: 15px;">
+            <div class="col description_store">
+                <?php echo "</br>" . $producto["provedor_nombre"] . "</br>" . $producto["provedor_contacto"] . "</br></br><a href='tel:" . $producto["provedor_telefono"] . "' style = 'font-family: MontserratLight, serif; color: #000000; text-decoration: none;'>" . $producto["provedor_telefono"] . "</a></br><a href='mailto:" . $producto["provedor_correo"] . "' style = 'font-family: MontserratLight, serif; color: #000000; text-decoration: none;'>" . $producto["provedor_correo"] . "</a></br>"; ?>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+            <div class="col-8"></div>
+            <div class="col">
+                <a href="#"><img
+                            src="assets/images/<?php echo ($favorite) ? "icon_favorite_on.png" : "icon_favorite_off.png" ?>"
+                            width="40px" style="margin-right: 5px;">
+                </a>
+                <a href="#"><img
+                            src="assets/images/<?php echo ($providerFavorite) ? "icon_favorite_store_on.png" : "icon_favorite_store_off.png" ?>"
+                            width="40px" style="margin-right: 5px;">
+                </a>
+            </div>
+            <div class="col-1"></div>
+        </div>
     </div>
 </div>
 
+<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="subtitle_product">Descripci&oacute;n</div>
+        <div class="description_product"><br><?php echo $producto["producto_descripcion"]; ?></div>
+    </div>
+    <div class="col-1"></div>
+</div>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <hr>
+    </div>
+    <div class="col-1"></div>
+</div>
+<div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+    <div class="col-1"></div>
+    <div class="col-7">
+        <div class="subtitle_product">Comentarios</div>
+    </div>
+    <div class="col-2 button_orange">Opini&oacute;n</div>
+    <div class="col-2"></div>
+</div>
 
+<?php
+foreach ($comments as $comment) {
+    ?>
+    <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+
+    </div>
+<?php }
+?>
 <?php include "includes/footer.php"; ?>
 
 <!-- Optional JavaScript -->
