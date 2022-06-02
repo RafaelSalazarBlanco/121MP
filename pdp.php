@@ -19,11 +19,14 @@ $product_id = $_GET["product_id"];
 
     $producto = $jsonProducto["producto"];
     $number = $producto["producto_precio"] * 1;
+    $promedio = intval($producto["promedio"]);
+
 
     $favorite = $producto["favorite"];
     $providerFavorite = $producto["provedor_favorite"];
 
     $comments = $producto["producto_comentarios"];
+    $images = $producto["producto_imagenes"];
 
     $price = money_format("%.2n", $number);
     ?>
@@ -51,7 +54,17 @@ $product_id = $_GET["product_id"];
 
 <div class="row">
     <div class="col-2">
+        <div style="overflow-scrolling: auto;" align="center">
+            <img src="<?php echo $producto["producto_thumb"]; ?>" class="image_pdp_selection"/>
 
+            <?php
+                if (count($images) > 0){
+                    foreach ($images as $image){?>
+                    <img src="<?php echo $image["image_thumb"]; ?>" class="image_pdp_selection"/>
+                <?php }
+                }
+            ?>
+        </div>
     </div>
     <div class="col-6" align="center">
         <img src="<?php echo $producto["producto_image"]; ?>"
@@ -65,7 +78,11 @@ $product_id = $_GET["product_id"];
             <div class="price_product"> <?php echo $price; ?></div>
         </div>
         <div class="row">
-            <div class="col-6"></div>
+            <div class="col-6">
+                <div class="row">
+                    <img src="assets/images/rate_<?php echo $promedio; ?>.png" width="125px"/>
+                </div>
+            </div>
             <div class="col-6">
                 <div class="row">
                     <div class="share_product">COMPARTIR</div>
@@ -130,9 +147,33 @@ $product_id = $_GET["product_id"];
 
 <?php
 foreach ($comments as $comment) {
+    $rate = intval($comment["calificacion"]);
     ?>
     <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
-
+        <div class="col-1"></div>
+        <div class="col-10 box_comment">
+            <div class="row">
+                <div class="col">
+                    <div class="nickname_comment"><?php echo $comment["usuario_nombre"]; ?></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img src="assets/images/rate_<?php echo $rate; ?>.png" width="125px"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="date_comment"><?php echo $comment["fecha"]; ?></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="detail_comment"><?php echo $comment["comentario"]; ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
     </div>
 <?php }
 ?>
@@ -169,3 +210,4 @@ foreach ($comments as $comment) {
 
 </body>
 </html>
+

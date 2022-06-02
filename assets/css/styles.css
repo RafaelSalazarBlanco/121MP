@@ -179,3 +179,37 @@
     margin-bottom: 10px;
     padding-top: 8px;
 }
+
+.box_comment {
+    background: #f0f0f0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+}
+
+.nickname_comment {
+    font-family: MontserratThin, serif;
+    font-size: 23px;
+    padding-bottom: 30px;
+    color: black;
+}
+
+.date_comment{
+    font-family: MontserratSemiBold, serif;
+    font-size: 12px;
+}
+
+.detail_comment {
+    font-family: MontserratThin, serif;
+    font-size: 23px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: black;
+}
+
+.image_pdp_selection {
+    aspect-ratio: 1 / 1;
+    width: 70%; margin-top: 10px;
+}

@@ -63,7 +63,7 @@ if (count($productos) > 0) {
                 <div class="col-lg-4">
                     <div class="container_image">
                         <a href="pdp.php?product_id=<?php echo $row["producto_id"];?>">
-                            <img src="<?php echo $row["producto_image"]; ?>" alt="Avatar" class="image"
+                            <img src="<?php echo $row["producto_thumb"]; ?>" alt="Avatar" class="image"
                                  style="width:100%">
                             <div class="middle">
                                 <div class="text"><?php echo strtoupper($row["producto_nombre"]); ?></div>
