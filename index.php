@@ -106,10 +106,12 @@ if (count($categorias) > 0) {
                 ?>
                 <div class="col-lg-4">
                     <div class="container_image">
-                        <img src="<?php echo $row["categoria_thumb"]; ?>" alt="Avatar" class="image" style="width:100%">
-                        <div class="middle">
-                            <div class="text"><?php echo $row["categoria_nombre"]; ?></div>
-                        </div>
+                        <a href="clp.php?category_id=<?php echo $row["categoria_id"];?>">
+                            <img src="<?php echo $row["categoria_thumb"]; ?>" alt="Avatar" class="image" style="width:100%">
+                            <div class="middle">
+                                <div class="text"><?php echo $row["categoria_nombre"]; ?></div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             <?php } ?>
