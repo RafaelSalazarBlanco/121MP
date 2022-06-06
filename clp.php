@@ -29,18 +29,36 @@ $resultadoCategory = $new->request("getCategory", array("categoria_id" => $categ
 $jsonCategory = json_decode($resultadoCategory, true);
 $category = $jsonCategory["categoria"];
 $productos = $category["categoria_productos"];
-//print_r($jsonCategory);
+
+
+$resultadoCategories = $new->request("getCategories", array(), "GET");
+$jsonCategories = json_decode($resultadoCategories, true);
+$categories = $jsonCategories["categories"];
 
 ?>
 <div class="container" style="padding-top: 40px; padding-bottom: 30px; font-size: medium;">
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-9">
-            <h2 style="font-family: MontserratBold, serif;" align="center"><?php echo $category["categoria_nombre"]; ?></h2>
+        <div class="col-lg-9">
+            <h2 style="font-family: MontserratBold, serif;"
+                align="center"><?php echo $category["categoria_nombre"]; ?></h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-3"></div>
+        <div class="col-lg-3" style="padding-left: 20px; padding-right: 20px;">
+            <?php
+            foreach ($categories as $category) { ?>
+                <div class="category">
+                    <a href="clp.php?category_id=<?php echo $category["categoria_id"]; ?>">
+                        <div class="col">
+                            <?php echo $category["categoria_nombre"]; ?>
+                            <br>
+                            <hr>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
+        </div>
         <div class="col-9">
             <div class="row">
 
@@ -49,7 +67,7 @@ $productos = $category["categoria_productos"];
                     ?>
                     <div class="col-lg-4">
                         <div class="container_image">
-                            <a href="pdp.php?product_id=<?php echo $row["producto_id"];?>">
+                            <a href="pdp.php?product_id=<?php echo $row["producto_id"]; ?>">
                                 <img src="<?php echo $row["producto_thumb"]; ?>" alt="Avatar" class="image"
                                      style="width:100%">
                                 <div class="middle">

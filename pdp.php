@@ -55,22 +55,25 @@ $product_id = $_GET["product_id"];
 <div class="row">
     <div class="col-2">
         <div style="overflow-scrolling: auto;" align="center">
-            <img src="<?php echo $producto["producto_thumb"]; ?>" class="image_pdp_selection"/>
+            <a href="#" name="image_click" id="0"><img src="<?php echo $producto["producto_thumb"]; ?>" class="image_pdp_selection"/></a>
 
             <?php
-                if (count($images) > 0){
-                    foreach ($images as $image){?>
-                    <img src="<?php echo $image["image_thumb"]; ?>" class="image_pdp_selection"/>
-                <?php }
+            if (count($images) > 0) {
+                $i = 1;
+                foreach ($images as $image) {
+                    ?>
+                    <a href="#" name="image_click"  id="<?php echo $i; ?>"> <img src="<?php echo $image["image_thumb"]; ?>" class="image_pdp_selection"/></a>
+                    <?php
+                    $i++;
                 }
+            }
             ?>
         </div>
     </div>
-    <div class="col-6" align="center">
-        <img src="<?php echo $producto["producto_image"]; ?>"
-             style="width: 75%; margin-top: 10px;"/>
+    <div class="col-5" align="center">
+        <img id="image_principal"  src="<?php echo $producto["producto_image"]; ?>"  style="width: 80%; margin-top: 10px;"/>
     </div>
-    <div class="col-4">
+    <div class="col-lg-5" style="padding-left: 40px;">
         <div class="row">
             <div class="title_product"> <?php echo $producto["producto_nombre"]; ?></div>
         </div>
@@ -205,6 +208,23 @@ foreach ($comments as $comment) {
         wrap: true,
         touch: true
     })
+    var image_principal = $('#image_principal')
+
+    var arrayImagesName = new Array();
+
+    arrayImagesName.push("<?php echo  $producto["producto_image"]; ?>");
+
+    <?php
+    foreach ($images as $image) {?>
+    arrayImagesName.push("<?php echo  $image["image"]; ?>");
+    <?php }
+    ?>
+
+    $(document).on("click", "a[name=image_click]", function (e) {
+        e.preventDefault();
+        var id = $(this).attr('id');
+        image_principal.attr('src',arrayImagesName[id]);
+    });
 
 </script>
 
