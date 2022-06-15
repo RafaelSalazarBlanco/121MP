@@ -19,6 +19,7 @@ class CurlRequest
         }
 
         $ch = curl_init($urlString);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false);
         //a true, obtendremos una respuesta de la url, en otro caso,
         //true si es correcto, false si no lo es
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
