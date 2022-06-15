@@ -115,6 +115,17 @@
     padding: 45% 20px;
 }
 
+container_image_plp .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: 100px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border: 10px solid #FFB426;
+    aspect-ratio: 1 / 1;
+}
+
 .title_product {
     color: black; 
     font-family: MontserratThin, serif;
@@ -122,10 +133,24 @@
     padding-top: 10px;
 }
 
+.title_product_plp {
+    color: black;
+    font-family: MontserratThin, serif;
+    font-size: 16px;
+    padding-top: 10px;
+}
+
 .price_product {
     color: black;
     font-family: MontserratSemiBold, serif;
     font-size: 33px;
+    padding-top: 10px;
+}
+
+.price_product_plp {
+    color: black;
+    font-family: MontserratSemiBold, serif;
+    font-size: 16px;
     padding-top: 10px;
 }
 
