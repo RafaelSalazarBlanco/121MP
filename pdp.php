@@ -180,8 +180,6 @@ foreach ($comments as $comment) {
     </div>
 <?php }
 ?>
-<?php include "includes/footer.php"; ?>
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="assets/js/jquery-3.2.1.slim.min.js"
@@ -227,7 +225,7 @@ foreach ($comments as $comment) {
     });
 
 </script>
-
+<?php include "includes/footer.php"; ?>
 </body>
 </html>
 

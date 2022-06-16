@@ -118,8 +118,6 @@ if (!isset($_GET["categoria_id"])) {
     </div>
 </div>
 
-<?php include "includes/footer.php"; ?>
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="assets/js/jquery-3.2.1.slim.min.js"
@@ -132,6 +130,6 @@ if (!isset($_GET["categoria_id"])) {
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-
+<?php include "includes/footer.php"; ?>
 </body>
 </html>
