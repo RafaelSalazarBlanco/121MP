@@ -252,3 +252,4 @@ container_image_plp .image {
     text-decoration: none;
 }
 
+.circular--square { border-radius: 50%; border-color: #2D2D2D;border-width: medium; height: 120px;width: 120px;object-fit: cover; display: block; margin: auto; }
