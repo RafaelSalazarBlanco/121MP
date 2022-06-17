@@ -1,10 +1,10 @@
+<?php include "includes/clientCurl.php"; ?>
 <!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php include "includes/clientCurl.php"; ?>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
@@ -13,11 +13,11 @@
     <title>121 Market Place</title>
 </head>
 <body>
+<script src="assets/js/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
 
 <?php include "includes/navbar.php"; ?>
 
 <?php
-$new = new CurlRequest();
 $estado_id = "";
 $resultadoTiendas = $new->request("getStores", array("estado_id" => $estado_id), "GET");
 $jsonTiendas = json_decode($resultadoTiendas, true);
@@ -65,9 +65,6 @@ $tiendas = $jsonTiendas["tiendas"];
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="assets/js/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
 <script src="assets/js/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>

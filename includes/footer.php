@@ -3,10 +3,14 @@
         <div class="modal-content">
             <div class="modal-header" style=" border-bottom: 1px solid #F04648; margin-left: 30px; margin-right: 30px;">
                 <div style="width: 100%; text-align: center; font-family: MontserratSemiBold, serif; font-size: 18px;">Cont&aacute;ctanos</div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+                <a name="closeContact" href="#">
+                    <img src="assets/images/btn_close.png" width="20px"/>
+                </a>            </div>
             <div class="modal-body">
-                <form></form>
+                <form>
+
+
+                </form>
             </div>
             <div class="modal-footer">
 
@@ -69,5 +73,12 @@
         e.preventDefault();
         $("#modal_contact").modal("show");
     });
+
+    $(document).on("click", "a[name=closeContact]", function (e) {
+        e.preventDefault();
+        $("#modal_contact").modal("hide");
+    });
+
+
 
 </script>

@@ -3,6 +3,7 @@ if (!isset($_GET["product_id"])) {
     header('Location: index.php');
 }
 $product_id = $_GET["product_id"];
+include "includes/clientCurl.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -10,10 +11,8 @@ $product_id = $_GET["product_id"];
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php include "includes/clientCurl.php"; ?>
     <?php
     setlocale(LC_MONETARY, "es_MX");
-    $new = new CurlRequest();
     $resultadoproduct = $new->request("getProductDetail", array("producto_id" => $product_id), "GET");
     $jsonProducto = json_decode($resultadoproduct, true);
 
@@ -48,6 +47,7 @@ $product_id = $_GET["product_id"];
     <title>121 Market Place</title>
 </head>
 <body>
+<script src="assets/js/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
 
 <?php include "includes/navbar.php"; ?>
 
@@ -180,19 +180,17 @@ foreach ($comments as $comment) {
     </div>
 <?php }
 ?>
-<?php include "includes/footer.php"; ?>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="assets/js/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+
 <script src="assets/js/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
 <script src="assets/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<?php include "includes/footer.php"; ?>
 
 <script>
     var myCarousel = document.querySelector('#myCarousel')
