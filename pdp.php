@@ -3,7 +3,7 @@ if (!isset($_GET["product_id"])) {
     header('Location: index.php');
 }
 $product_id = $_GET["product_id"];
-include "includes/clientCurl.php";
+include "includes/validateSession.php";
 ?>
 <!doctype html>
 <html lang="en">
